@@ -12,26 +12,26 @@
 # sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
 
 # Add autocore support for armvirt
-sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
+#sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
 
 # Set etc/openwrt_release
-sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
-echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
+#sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
+#echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 # sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
 # 修改默认IP地址
-sed -i 's/192.168.1.1/192.168.66.253/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.66.253/g' package/base-files/files/bin/config_generate
 
 # 修改主机名
 sed -i "s/hostname='OpenWrt'/hostname='GBC'/g" package/base-files/files/bin/config_generate
 # 修改设备说明
-sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
-sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='GBC $(date +"%y%m%d")'/g" package/base-files/files/etc/openwrt_release
+#sed -i '/openwrt_release/d' package/lean/default-settings/files/zzz-default-settings
+#sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='GBC $(date +"%y%m%d")'/g" package/base-files/files/etc/openwrt_release
 # 写入设备型号
-echo "DISTRIB_MODEL='X86_64'" >> package/base-files/files/etc/openwrt_release
+#echo "DISTRIB_MODEL='X86_64'" >> package/base-files/files/etc/openwrt_release
 # 调整 x86 型号只显示 CPU 型号
-sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}/g' package/lean/autocore/files/x86/autocore
+#sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}/g' package/lean/autocore/files/x86/autocore
 
 
 # Replace the default software source
