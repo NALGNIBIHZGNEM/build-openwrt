@@ -12,8 +12,25 @@
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7:::/g' package/base-files/files/etc/shadow
 
 # Set etc/openwrt_release
-sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
+sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='GBC$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
 echo "DISTRIB_SOURCECODE='immortalwrt'" >>package/base-files/files/etc/openwrt_release
+
+
+# Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.66.253）
+# sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
+# 修改默认IP地址
+sed -i 's/192.168.1.1/192.168.66.253/g' package/base-files/files/bin/config_generate
+
+# 修改主机名
+sed -i "s/hostname='OpenWrt'/hostname='GBC'/g" package/base-files/files/bin/config_generate
+# 修改设备说明
+sed -i "s/DISTRIB_DESCRIPTION=.*/DISTRIB_DESCRIPTION='GBC $(date +"%y%m%d")'/g" package/base-files/files/etc/openwrt_release
+# 写入设备型号
+echo "DISTRIB_MODEL='X86_64'" >> package/base-files/files/etc/openwrt_release
+
+
+
+
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 # sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
