@@ -3,7 +3,7 @@
 # Description: Build OpenWrt
 #============================================================================================
 
-name: immortalwrt编译固件
+name: 适配immortalwrt编译ssr固件
 
 on:
   repository_dispatch:
